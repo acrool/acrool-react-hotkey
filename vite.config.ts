@@ -17,13 +17,6 @@ export default defineConfig({
         }),
         visualizer() as Plugin,
     ],
-    css: {
-        modules: {
-            localsConvention: 'camelCase',
-            scopeBehaviour: 'local',
-            generateScopedName: 'acrool-react-hotkey__[local]',
-        }
-    },
     build: {
         minify: process.env.NODE_ENV === 'production',
         sourcemap: process.env.NODE_ENV !== 'production',
@@ -38,7 +31,6 @@ export default defineConfig({
             output: {
                 globals: {
                     react: 'React',
-                    'react-dom': 'ReactDOM',
                 },
             },
         },
