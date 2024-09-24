@@ -1,7 +1,6 @@
-import Logger from '@acrool/js-logger';
+// import Logger from '@acrool/js-logger';
 import {useCallback, useEffect} from 'react';
 
-import {useHotkey} from './HotkeyProvider';
 import {HotkeyListenerProps} from './types';
 
 
@@ -16,11 +15,9 @@ const formFieldTags = ['INPUT', 'TEXTAREA', 'SELECT'];
 const HotkeyListener = ({
     onKeyDown,
     hotKey,
-    screenKey,
     ignoreFormField
 }: HotkeyListenerProps) => {
 
-    const {checkIsCurrent} = useHotkey();
 
     /**
      * 解析Hotkey內容
@@ -46,11 +43,11 @@ const HotkeyListener = ({
         if(!hotkeys.includes(eventHotKey)) return;
 
         // debug
-        Logger.info(HotkeyListener.name, `screenKey: ${screenKey}, tagName: ${activeEl?.tagName}`, 'hotkeys', hotkeys, [e.ctrlKey, e.altKey, e.metaKey, e.key.toLowerCase()] );
+        // Logger.info(HotkeyListener.name, `screenKey: ${screenKey}, tagName: ${activeEl?.tagName}`, 'hotkeys', hotkeys, [e.ctrlKey, e.altKey, e.metaKey, e.key.toLowerCase()] );
 
-        if(!checkIsCurrent(screenKey)){
-            return;
-        }
+        // if(!checkIsCurrent(screenKey)){
+        //     return;
+        // }
 
         if(!ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))){
             return;
@@ -64,7 +61,7 @@ const HotkeyListener = ({
         e.preventDefault();
 
         onKeyDown(e);
-    }, [hotKey, screenKey, onKeyDown]);
+    }, [hotKey, onKeyDown]);
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
