@@ -11,7 +11,7 @@ import {generateOnKeydown} from './utils';
 const HotkeyListener = ({
     onKeyDown,
     hotKey,
-    ignoreFormField
+    ignoreFormField = false
 }: HotkeyListenerProps) => {
     /**
      * 處理按鍵壓下
