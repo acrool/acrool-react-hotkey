@@ -33,9 +33,9 @@ export const generateOnKeydown = (hotkey: string, onKeyDown: (event: React.Keybo
         const activeEl = document.activeElement;
 
         if(e.repeat) return;
-        if(hotkeys.includes('ctrl') && !e.ctrlKey) return;
-        if(hotkeys.includes('cmd') && !e.metaKey) return;
-        if(hotkeys.includes('shift') && !e.shiftKey) return;
+        if(hotkeys.includes('ctrl') && !(e.ctrlKey && !hotkeys.includes(eventHotKey))) return;
+        if(hotkeys.includes('cmd') && !(e.metaKey && !hotkeys.includes(eventHotKey))) return;
+        if(hotkeys.includes('shift') && !(e.shiftKey && !hotkeys.includes(eventHotKey))) return;
         if(!hotkeys.includes(eventHotKey)) return;
 
         // debug
