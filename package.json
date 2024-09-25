@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-hotkey",
-  "version": "0.0.3-alpha.3",
+  "version": "0.0.3",
   "description": "Hotkey library based for Reactjs",
   "keywords": [
     "acrool",
