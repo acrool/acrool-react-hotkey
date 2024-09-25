@@ -1,6 +1,6 @@
 # Acrool React Hotkey
 
-<a href="https://acrool-react-hotkey.pages.dev/" title="Acrool React Hotkey - This is a hotkey function for React development loading hotkey">
+<a href="https://acrool-react-hotkey.pages.dev/" title="Acrool React Hotkey - This is a hotkey component for ReactJs">
     <img src="https://raw.githubusercontent.com/acrool/acrool-react-hotkey/main/example/public/og.webp" alt="Acrool React Hotkey Logo"/>
 </a>
 
@@ -24,8 +24,9 @@
 
 ## Features
 
-- Supports queue hotkey list
-- Plug and unplug using `@acrool/react-portal` and `framer-motion`
+- Supports dom onKeyDown
+- Supports not repeat onKeyDown
+- componentOnMount add listen, componentUnMount remove listen
 
 ## Install
 
@@ -35,58 +36,35 @@ yarn add @acrool/react-hotkey
 
 ## Usage
 
-add in your index.tsx
-```tst
-import "@acrool/react-hotkey/dist/index.css";
-```
-
-add in your App.tsx
-
-```tsx
-import {HotkeyPortal} from "@acrool/react-hotkey";
-
-const App = () => {
-    return (
-        <div>
-            <BaseUsed/>
-            <HotkeyPortal
-                isVisibleQueueKey={false}
-                renderLoader={<Loader/>}
-                defaultMessage="Loading..."
-            />
-        </div>
-    );
-};
-```
-
-then in your page
-
 ```tsx
 import {hotkey} from '@acrool/react-hotkey';
 import {useEffect} from "react";
 
 const Example = () => {
 
-    useEffect(() => {
-        hotkey.show();
-        
-        setTimeout(() => {
-            hotkey.hide();
-        }, 3000)
-    }, []);
-
-    return (
-        <div>
-            sample page
-        </div>
+    
+    const handleSave = () => {
+        // white yourr code
+    }
+    const handleCancel = () => {
+        // white yourr code
+    }
+    
+    /**
+     * Save
+     */
+    const handleOnKeyDown = (e) => {
+        generateOnKeydown('ctrl+enter', handleSave)(e);
+        generateOnKeydown('escape', handleCancel)(e);
+    };
+    
+    return (<>
+            <input type="text" onKeyDown={handleOnKeyDown}/>
+            <HotkeyListener hotKey="ctrl+," onKeyDown={() => console.log('to setting')} />
+        </>
     );
 };
 ```
-
-- hotkey.show
-- hotkey.hide
-- toast.hideAll
-
 
 There is also a example that you can play with it:
 
