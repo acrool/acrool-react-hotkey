@@ -37,9 +37,9 @@ const HotkeyListener = ({
         const activeEl = document.activeElement;
 
         if(e.repeat) return;
-        if(e.ctrlKey && !hotkeys.includes('ctrl')) return;
-        if(e.metaKey && !hotkeys.includes('cmd')) return;
-        if(e.shiftKey && !hotkeys.includes('shift')) return;
+        if(hotkeys.includes('ctrl') && !e.ctrlKey) return;
+        if(hotkeys.includes('cmd') && !e.metaKey) return;
+        if(hotkeys.includes('shift') && !e.shiftKey) return;
         if(!hotkeys.includes(eventHotKey)) return;
 
         // debug
