@@ -6,6 +6,7 @@ enum EKeyboardKey {
     Escape = 'Escape',
     Enter = 'Enter',
     Tab = 'Tab',
+    Space = 'Space',
 }
 const formFieldTags = ['INPUT', 'TEXTAREA', 'SELECT'];
 
@@ -43,8 +44,8 @@ export const generateOnKeydown = (hotkey: string, onKeyDown: (event: React.Keybo
         const metaMatched = requiresMeta === e.metaKey;
         const shiftMatched = requiresShift === e.shiftKey;
 
-        // 檢查普通鍵是否匹配
-        const keyMatched = hotkeys.includes(eventHotKey);
+        // 檢查普通鍵是否匹配 (包含空白鍵，使用 e.code 判斷)
+        const keyMatched = hotkeys.includes(eventHotKey) || e.code === EKeyboardKey.Space;
 
         // 如果修飾鍵或普通鍵不符合則退出
         if (!keyMatched || !ctrlMatched || !metaMatched || !shiftMatched) {
