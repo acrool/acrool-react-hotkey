@@ -31,6 +31,7 @@ export const generateOnKeydown = (hotkey: string, onKeyDown: (event: React.Keybo
     return (e: React.KeyboardEvent) => {
         const hotkeys = decodeHotkey(hotkey);
         const eventHotKey = e.key.toLowerCase();
+        const eventHotCode = e.code.toLowerCase();
         const activeEl = document.activeElement;
 
         if (e.repeat) return;
@@ -45,7 +46,7 @@ export const generateOnKeydown = (hotkey: string, onKeyDown: (event: React.Keybo
         const shiftMatched = requiresShift === e.shiftKey;
 
         // 檢查普通鍵是否匹配 (包含空白鍵，使用 e.code 判斷)
-        const keyMatched = hotkeys.includes(eventHotKey) || e.code === EKeyboardKey.Space;
+        const keyMatched = hotkeys.includes(eventHotKey) || hotkeys.includes(eventHotCode);
 
         // 如果修飾鍵或普通鍵不符合則退出
         if (!keyMatched || !ctrlMatched || !metaMatched || !shiftMatched) {
