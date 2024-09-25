@@ -37,12 +37,9 @@ yarn add @acrool/react-hotkey
 ## Usage
 
 ```tsx
-import {hotkey} from '@acrool/react-hotkey';
-import {useEffect} from "react";
+import {generateOnKeydown, HotkeyListener} from '@acrool/react-hotkey';
 
 const Example = () => {
-
-    
     const handleSave = () => {
         // white yourr code
     }
