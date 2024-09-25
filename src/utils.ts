@@ -7,33 +7,51 @@ enum EKeyboardKey {
     Enter = 'Enter',
     Tab = 'Tab',
 }
+const formFieldTags = ['INPUT', 'TEXTAREA', 'SELECT'];
+
+
+/**
+ * 解析Hotkey內容
+ */
+const decodeHotkey = (hotKey: string) => {
+    return hotKey
+        ?.split('+')
+        .map(key => key.trim().toLowerCase()) ?? [];
+};
 
 
 /**
  * 處理鍵盤按下Enter
- * @param cb
+ * @param hotkey
+ * @param onKeyDown
+ * @param ignoreFormField
  */
-export const generateCtrlEnter = (cb: (event?: React.KeyboardEvent) => void) => {
+export const generateOnKeydown = (hotkey: string, onKeyDown: (event: React.KeyboardEvent) => void, ignoreFormField = true) => {
     return (e: React.KeyboardEvent) => {
-        if(e.ctrlKey && e.key === EKeyboardKey.Enter && cb){
-            (document.activeElement as HTMLElement).blur();
-            e.stopPropagation();
-            e.preventDefault();
-            cb(e);
-        }
-    };
-};
+        const hotkeys = decodeHotkey(hotkey);
+        const eventHotKey = e.key.toLowerCase();
+        const activeEl = document.activeElement;
 
-/**
- * 處理鍵盤按下ESC
- * @param cb
- */
-export const generateEsc = (cb: (event?: React.KeyboardEvent) => void) => {
-    return (e: React.KeyboardEvent) => {
-        if(e.key === EKeyboardKey.Escape && cb){
-            e.stopPropagation();
-            e.preventDefault();
-            cb(e);
+        if(e.repeat) return;
+        if(hotkeys.includes('ctrl') && !e.ctrlKey) return;
+        if(hotkeys.includes('cmd') && !e.metaKey) return;
+        if(hotkeys.includes('shift') && !e.shiftKey) return;
+        if(!hotkeys.includes(eventHotKey)) return;
+
+        // debug
+        // Logger.info(HotkeyListener.name, `screenKey: ${screenKey}, tagName: ${activeEl?.tagName}`, 'hotkeys', hotkeys, [e.ctrlKey, e.altKey, e.metaKey, e.key.toLowerCase()] );
+
+        if(!ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))){
+            return;
         }
+
+        if(!onKeyDown){
+            return;
+        }
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        onKeyDown(e);
     };
 };
