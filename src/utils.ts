@@ -20,8 +20,9 @@ const decodeHotkey = (hotKey: string) => {
 
 const getOptionDefault = (options?: IKeydownOptions) => {
     return {
-        ignoreFormField: options?.ignoreFormField ?? false,
+        ignoreFormField: options?.ignoreFormField ?? true,
         formFieldTags: options?.formFieldTags ?? formFieldTags,
+
         preventDefault: options?.preventDefault ?? true,
         stopPropagation: options?.stopPropagation ?? true,
     };
@@ -71,15 +72,6 @@ export const generateOnKeydown = (
                 continue;
             }
 
-            // 檢查是否忽略輸入框等表單元素
-            if (!_options.ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
-                continue;
-            }
-
-            if (!onKeyDown) {
-                continue;
-            }
-
             // 替換預設行為
             if(_options.preventDefault){
                 e.preventDefault();
@@ -90,8 +82,16 @@ export const generateOnKeydown = (
                 e.stopPropagation();
             }
 
-            onKeyDown(e);
+            // 檢查是否忽略輸入框等表單元素
+            if (!_options.ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
+                continue;
+            }
 
+            if (!onKeyDown) {
+                continue;
+            }
+
+            onKeyDown(e);
             break;
         }
 

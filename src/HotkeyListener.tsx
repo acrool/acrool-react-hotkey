@@ -6,7 +6,12 @@ import {generateOnKeydown} from './utils';
 
 /**
  * 透過 mount unmount 註冊 keydown 事件
- * @param onKeydown
+ * @param onKeyDown
+ * @param hotKey
+ * @param stopPropagation 停止冒泡
+ * @param preventDefault 阻止預設行為
+ * @param ignoreFormField 是否忽略在Form相關欄位不觸發
+ * @param formFieldTags
  */
 const HotkeyListener = ({
     onKeyDown,
