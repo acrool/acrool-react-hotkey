@@ -72,6 +72,12 @@ export const generateOnKeydown = (
                 continue;
             }
 
+
+            // 檢查是否忽略輸入框等表單元素
+            if (!_options.ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
+                continue;
+            }
+
             // 替換預設行為
             if(_options.preventDefault){
                 e.preventDefault();
@@ -80,11 +86,6 @@ export const generateOnKeydown = (
             // 阻止冒泡
             if(_options.stopPropagation){
                 e.stopPropagation();
-            }
-
-            // 檢查是否忽略輸入框等表單元素
-            if (!_options.ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
-                continue;
             }
 
             if (!onKeyDown) {
