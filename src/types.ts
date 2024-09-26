@@ -7,10 +7,9 @@ export interface IKeydownOptions {
 }
 
 
-export interface HotkeyListenerProps{
+export interface HotkeyListenerProps extends IKeydownOptions{
     onKeyDown?: (e: React.KeyboardEvent) => void
     hotKey: string|string[]
-    options?: IKeydownOptions
 }
 
 
