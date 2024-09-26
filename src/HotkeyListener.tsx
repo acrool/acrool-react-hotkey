@@ -16,9 +16,9 @@ import {generateOnKeydown} from './utils';
 const HotkeyListener = ({
     onKeyDown,
     hotKey,
-    stopPropagation,
-    preventDefault,
-    ignoreFormField,
+    stopPropagation = true,
+    preventDefault = true,
+    ignoreFormField = false,
     formFieldTags,
 }: HotkeyListenerProps) => {
     /**

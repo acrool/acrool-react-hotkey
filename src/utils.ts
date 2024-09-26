@@ -20,8 +20,8 @@ const decodeHotkey = (hotKey: string) => {
 
 const getOptionDefault = (options?: IKeydownOptions) => {
     return {
-        ignoreFormField: options?.ignoreFormField ?? true,
         formFieldTags: options?.formFieldTags ?? formFieldTags,
+        ignoreFormField: options?.ignoreFormField ?? true,
 
         preventDefault: options?.preventDefault ?? true,
         stopPropagation: options?.stopPropagation ?? true,
