@@ -11,14 +11,14 @@ import {generateOnKeydown} from './utils';
 const HotkeyListener = ({
     onKeyDown,
     hotKey,
-    ignoreFormField = false
+    options
 }: HotkeyListenerProps) => {
     /**
      * 處理按鍵壓下
      */
     const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
         if(onKeyDown){
-            generateOnKeydown(hotKey, onKeyDown, ignoreFormField)(e);
+            generateOnKeydown(hotKey, onKeyDown, options)(e);
         }
 
     }, [hotKey, onKeyDown]);
