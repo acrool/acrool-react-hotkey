@@ -22,8 +22,8 @@ const getOptionDefault = (options?: IKeydownOptions) => {
     return {
         ignoreFormField: options?.ignoreFormField ?? false,
         formFieldTags: options?.formFieldTags ?? formFieldTags,
-        preventDefault: options?.preventDefault ?? false,
-        stopPropagation: options?.stopPropagation ?? false,
+        preventDefault: options?.preventDefault ?? true,
+        stopPropagation: options?.stopPropagation ?? true,
     };
 };
 
