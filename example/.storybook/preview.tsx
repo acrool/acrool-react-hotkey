@@ -1,12 +1,9 @@
 import type { Preview } from "@storybook/react";
-import '@acrool/react-hotkey/dist/index.css';
 import '@acrool/react-grid/dist/index.css';
 import '@acrool/react-table/dist/index.css';
 import '@acrool/react-table/dist/themes/game.css';
 import {GridThemeProvider} from "@acrool/react-grid";
-import React, {createElement} from "react";
-import {HotkeyPortal} from '@acrool/react-hotkey';
-import Loader from "../src/components/Loader";
+import React from "react";
 
 
 const preview: Preview = {
@@ -22,14 +19,6 @@ const preview: Preview = {
       (Story) => (
           <GridThemeProvider>
             <Story />
-
-
-              <HotkeyPortal
-                  renderLoader={() => createElement(Loader, {width: '30px', height: '30px'}, null)}
-                  isVisibleQueueKey={false}
-                  defaultMessage="Loading..."
-              />
-
 
           </GridThemeProvider>
       ),

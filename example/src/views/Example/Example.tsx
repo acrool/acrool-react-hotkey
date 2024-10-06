@@ -1,28 +1,38 @@
-import { HotkeyListener } from '@acrool/react-hotkey';
-import AcroolTable from '@acrool/react-table';
-import React from "react";
+import {HotkeyListener} from '@acrool/react-hotkey';
+import React, {useState} from 'react';
 
 
-
-const generateConsole = (e: React.KeyboardEvent) => {
-    console.log(`${e.key} / ${e.code} / ${e.ctrlKey}`);
-};
 
 const Example = () => {
 
+    const [keys, setKeys] = useState<string>();
+
+
+
+    const generateConsole = (e: React.KeyboardEvent) => {
+        setKeys(`${e.key}(${e.code}) / ${e.ctrlKey}`);
+
+    };
+
+
     return <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start', width: '100%'}}>
-        <HotkeyListener hotKey="a" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="b" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="c" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="d" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="e" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="f" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="g" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="Enter" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="Escape" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="Ctrl+F" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="Tab" onKeyDown={generateConsole}/>
-        <HotkeyListener hotKey="Space" onKeyDown={generateConsole}/>
+
+        {keys}
+
+        <input type="text"/>
+
+        <HotkeyListener hotKey="a" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="b" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="c" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="d" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="e" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="f" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="g" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="Enter" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="Escape" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="Ctrl+F" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="Tab" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="Space" onKeyDown={generateConsole} ignoreFormField/>
 
     </div>;
 };
