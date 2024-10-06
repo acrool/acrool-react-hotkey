@@ -21,10 +21,10 @@ const decodeHotkey = (hotKey: string) => {
 const getOptionDefault = (options?: IKeydownOptions) => {
     return {
         formFieldTags: options?.formFieldTags ?? formFieldTags,
-        ignoreFormField: options?.ignoreFormField ?? true,
+        ignoreFormField: options?.ignoreFormField,
 
-        preventDefault: options?.preventDefault ?? true,
-        stopPropagation: options?.stopPropagation ?? true,
+        preventDefault: options?.preventDefault,
+        stopPropagation: options?.stopPropagation,
     };
 };
 
