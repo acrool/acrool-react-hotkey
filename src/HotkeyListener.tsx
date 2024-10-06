@@ -1,6 +1,9 @@
 import {useCallback, useEffect, useRef} from 'react';
+
+import generateOnKeydown from './generateOnKeydown';
+import {useHotkeyScopeManager} from './HotkeyScopeManagerProvider';
+import {useHotkeyScope} from './HotkeyScopeProvider';
 import {HotkeyListenerProps} from './types';
-import {generateOnKeydown} from './utils';
 
 /**
  * 透過 mount unmount 註冊 keydown 事件
@@ -10,6 +13,7 @@ import {generateOnKeydown} from './utils';
  * @param preventDefault 阻止預設行為
  * @param ignoreFormField 是否忽略在Form相關欄位不觸發
  * @param formFieldTags
+ * @param scopeKey
  */
 const HotkeyListener = ({
     onKeyDown,
@@ -19,13 +23,22 @@ const HotkeyListener = ({
     ignoreFormField = false,
     formFieldTags,
 }: HotkeyListenerProps) => {
+    // 避免輸入法輸入中
     const isComposingRef = useRef<boolean>(false);
+
+    const {checkIsCurrentScope} = useHotkeyScopeManager();
+    const {scopeKey} = useHotkeyScope();
 
     /**
      * 處理按鍵壓下
      */
     const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-        if(!isComposingRef.current && onKeyDown){
+        console.log(scopeKey, checkIsCurrentScope(scopeKey));
+        if(
+            !isComposingRef.current &&
+            checkIsCurrentScope(scopeKey) &&
+            onKeyDown
+        ){
             generateOnKeydown(hotKey, onKeyDown, {stopPropagation, preventDefault, ignoreFormField, formFieldTags})(e);
         }
 

@@ -10,6 +10,7 @@ export interface IKeydownOptions {
 export interface HotkeyListenerProps extends IKeydownOptions{
     onKeyDown?: (e: React.KeyboardEvent) => void
     hotKey: string|string[]
+    scopeKey?: string
 }
 
 
