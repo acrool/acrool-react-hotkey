@@ -17,7 +17,7 @@ const decodeHotkey = (hotKey: string) => {
 const getOptionDefault = (options?: IKeydownOptions) => {
     return {
         formFieldTags: options?.formFieldTags ?? formFieldTags,
-        enabledInFormField: options?.enabledInFormField,
+        enabledInFormField: options?.enabledInFormField ?? true,
 
         preventDefault: options?.preventDefault,
         stopPropagation: options?.stopPropagation,
