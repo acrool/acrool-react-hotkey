@@ -3,10 +3,11 @@ export interface IKeydownOptions {
     ignoreFormField?: boolean
     formFieldTags?: EFormFieldTag[]
     preventDefault?: boolean
+    stopPropagation?: boolean
 }
 
 
-export interface HotkeyListenerProps extends IKeydownOptions{
+export interface HotkeyListenerProps extends Omit<IKeydownOptions, 'stopPropagation'>{
     onKeyDown?: (e: React.KeyboardEvent) => void
     hotKey: string|string[]
     scopeKey?: string
