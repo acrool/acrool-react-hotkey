@@ -26,22 +26,22 @@ const Example = () => {
 
 
         <HotkeyScopeProvider scopeKey="my">
-            <HotkeyListener hotKey="a" onKeyDown={generateConsole} ignoreFormField/>
+            <HotkeyListener hotKey="a" onKeyDown={generateConsole} enabledInFormField/>
         </HotkeyScopeProvider>
 
         <HotkeyScopeProvider scopeKey="my">
-            <HotkeyListener hotKey="b" onKeyDown={generateConsole} ignoreFormField/>
+            <HotkeyListener hotKey="b" onKeyDown={generateConsole} enabledInFormField/>
         </HotkeyScopeProvider>
-        <HotkeyListener hotKey="c" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="d" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="e" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="f" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="g" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="Enter" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="Escape" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="Ctrl+F" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="Tab" onKeyDown={generateConsole} ignoreFormField/>
-        <HotkeyListener hotKey="Space" onKeyDown={generateConsole} ignoreFormField/>
+        <HotkeyListener hotKey="c" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="d" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="e" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="f" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="g" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="Enter" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="Escape" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="Ctrl+F" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="Tab" onKeyDown={generateConsole} enabledInFormField/>
+        <HotkeyListener hotKey="Space" onKeyDown={generateConsole} enabledInFormField/>
     </div>;
 };
 

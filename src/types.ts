@@ -1,6 +1,6 @@
 
 export interface IKeydownOptions {
-    ignoreFormField?: boolean
+    enabledInFormField?: boolean
     formFieldTags?: EFormFieldTag[]
     preventDefault?: boolean
     stopPropagation?: boolean

@@ -17,7 +17,7 @@ const decodeHotkey = (hotKey: string) => {
 const getOptionDefault = (options?: IKeydownOptions) => {
     return {
         formFieldTags: options?.formFieldTags ?? formFieldTags,
-        ignoreFormField: options?.ignoreFormField,
+        enabledInFormField: options?.enabledInFormField,
 
         preventDefault: options?.preventDefault,
         stopPropagation: options?.stopPropagation,
@@ -68,9 +68,8 @@ const generateOnKeydown = (
                 continue;
             }
 
-
-            // 檢查是否忽略輸入框等表單元素
-            if (!_options.ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
+            // 如果在表單欄位不可使用，則檢查 是否正在表單欄位
+            if (!_options.enabledInFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
                 continue;
             }
 
