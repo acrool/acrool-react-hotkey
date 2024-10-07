@@ -19,7 +19,7 @@ const Example = () => {
 
     return <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start', width: '100%'}}>
 
-        [{scopeKeys.join(', ')}]
+        {scopeKeys.join(', ')}
         {keys}
 
         <input type="text"/>
@@ -29,7 +29,7 @@ const Example = () => {
             <HotkeyListener hotKey="a" onKeyDown={generateConsole} ignoreFormField/>
         </HotkeyScopeProvider>
 
-        <HotkeyScopeProvider scopeKey="mya">
+        <HotkeyScopeProvider scopeKey="my">
             <HotkeyListener hotKey="b" onKeyDown={generateConsole} ignoreFormField/>
         </HotkeyScopeProvider>
         <HotkeyListener hotKey="c" onKeyDown={generateConsole} ignoreFormField/>
