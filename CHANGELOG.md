@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7-alpha.6](https://github.com/acrool/acrool-react-hotkey/compare/v0.0.7-alpha.5...v0.0.7-alpha.6) (2024-10-07)
+
 ### [0.0.7-alpha.5](https://github.com/acrool/acrool-react-hotkey/compare/v0.0.7-alpha.4...v0.0.7-alpha.5) (2024-10-07)
 
 ### [0.0.7-alpha.4](https://github.com/acrool/acrool-react-hotkey/compare/v0.0.7-alpha.2...v0.0.7-alpha.4) (2024-10-07)
