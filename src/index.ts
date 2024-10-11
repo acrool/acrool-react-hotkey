@@ -1,4 +1,4 @@
 export {default as HotkeyListener} from './HotkeyListener';
-export * from './utils';
+export {default as generateOnKeydown} from './generateOnKeydown';
 export * from './types';
 

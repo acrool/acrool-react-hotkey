@@ -3,10 +3,6 @@ import React from 'react';
 import {formFieldTags} from './config';
 import {EFormFieldTag, IKeydownOptions} from './types';
 
-
-
-
-
 /**
  * 解析Hotkey內容
  */
@@ -21,10 +17,10 @@ const decodeHotkey = (hotKey: string) => {
 const getOptionDefault = (options?: IKeydownOptions) => {
     return {
         formFieldTags: options?.formFieldTags ?? formFieldTags,
-        ignoreFormField: options?.ignoreFormField ?? true,
+        enabledInFormField: options?.enabledInFormField ?? true,
 
-        preventDefault: options?.preventDefault ?? true,
-        stopPropagation: options?.stopPropagation ?? true,
+        preventDefault: options?.preventDefault,
+        stopPropagation: options?.stopPropagation,
     };
 };
 
@@ -34,7 +30,7 @@ const getOptionDefault = (options?: IKeydownOptions) => {
  * @param onKeyDown
  * @param options
  */
-export const generateOnKeydown = (
+const generateOnKeydown = (
     hotkey: string|string[],
     onKeyDown: (event: React.KeyboardEvent) => void,
     options?: IKeydownOptions,
@@ -72,9 +68,8 @@ export const generateOnKeydown = (
                 continue;
             }
 
-
-            // 檢查是否忽略輸入框等表單元素
-            if (!_options.ignoreFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
+            // 如果在表單欄位不可使用，則檢查 是否正在表單欄位
+            if (!_options.enabledInFormField && (activeEl && formFieldTags.includes(activeEl.tagName))) {
                 continue;
             }
 
@@ -98,3 +93,5 @@ export const generateOnKeydown = (
 
     };
 };
+
+export default generateOnKeydown;
