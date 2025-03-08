@@ -1,5 +1,4 @@
-import {HotkeyListener, HotkeyScopeProvider} from '@acrool/react-hotkey';
-import {useHotkeyScopeManager} from '@acrool/react-hotkey';
+import {HotkeyListener} from '@acrool/react-hotkey';
 import React, {useState} from 'react';
 
 
@@ -8,7 +7,6 @@ const Example = () => {
 
     const [keys, setKeys] = useState<string>();
 
-    const {scopeKeys} = useHotkeyScopeManager();
 
 
     const generateConsole = (e: React.KeyboardEvent) => {
@@ -19,19 +17,14 @@ const Example = () => {
 
     return <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start', width: '100%'}}>
 
-        {scopeKeys.join(', ')}
         {keys}
 
         <input type="text"/>
 
 
-        <HotkeyScopeProvider scopeKey="my">
-            <HotkeyListener hotKey="a" onKeyDown={generateConsole} enabledInFormField/>
-        </HotkeyScopeProvider>
+        <HotkeyListener hotKey="a" onKeyDown={generateConsole} enabledInFormField/>
 
-        <HotkeyScopeProvider scopeKey="my">
-            <HotkeyListener hotKey="b" onKeyDown={generateConsole} enabledInFormField/>
-        </HotkeyScopeProvider>
+        <HotkeyListener hotKey="b" onKeyDown={generateConsole} enabledInFormField/>
         <HotkeyListener hotKey="c" onKeyDown={generateConsole} enabledInFormField/>
         <HotkeyListener hotKey="d" onKeyDown={generateConsole} enabledInFormField/>
         <HotkeyListener hotKey="e" onKeyDown={generateConsole} enabledInFormField/>
