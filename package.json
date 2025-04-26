@@ -19,6 +19,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "browser": "./dist/acrool-react-hotkey.es.js",
       "import": "./dist/acrool-react-hotkey.es.js"
     }
@@ -50,7 +51,7 @@
     "react-dom": ">=18.0.0 <20.0.0"
   },
   "dependencies": {
-    "@acrool/js-logger": "^1.0.23"
+    "@acrool/js-logger": "^1.0.24"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
