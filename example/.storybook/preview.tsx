@@ -1,28 +1,34 @@
-import type { Preview } from "@storybook/react";
+import './reset.css';
 import '@acrool/react-grid/dist/index.css';
-import '@acrool/react-table/dist/index.css';
-import '@acrool/react-table/dist/themes/game.css';
-import {GridThemeProvider} from "@acrool/react-grid";
-import React from "react";
+
+import {GridThemeProvider} from '@acrool/react-grid';
+import type {Preview} from '@storybook/react';
+import {themes} from '@storybook/theming';
+import React, {createElement} from 'react';
+
+import Loader from '../src/components/atoms/Loader';
 
 
 const preview: Preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
+    parameters: {
+        darkMode: {
+            dark: {...themes.dark, appPreviewBg: '#000'},
+            light: {...themes.dark, appPreviewBg: '#fff'}
+        },
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i,
+            },
+        },
     },
-  },
-  decorators: [
-      (Story) => (
-          <GridThemeProvider>
-            <Story />
-
-          </GridThemeProvider>
-      ),
-  ],
+    decorators: [
+        (Story) => (
+            <GridThemeProvider>
+                <Story />
+            </GridThemeProvider>
+        ),
+    ],
 };
 
 export default preview;

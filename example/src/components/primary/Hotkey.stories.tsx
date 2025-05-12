@@ -1,6 +1,7 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import Example from '../src/views/Example';
+import Example from './Example';
+
 
 
 const meta = {
