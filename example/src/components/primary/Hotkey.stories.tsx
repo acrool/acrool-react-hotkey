@@ -10,11 +10,6 @@ const meta = {
     parameters: {
         layout: 'centered',
         actions: {argTypesRegex: '^on.*'},
-        docs: {
-            description: {
-                component: 'toast show method'
-            },
-        },
     },
     tags: ['autodocs'],
     argTypes: {},
@@ -30,5 +25,4 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
     args: {},
 };
-
 
